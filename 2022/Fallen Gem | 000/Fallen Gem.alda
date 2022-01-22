@@ -1,0 +1,43 @@
+# 4 bars
+loop = [
+  {a d e} * 4 |
+  {g c d} * 4 |
+  {[
+    f '1-4
+    g '5-6
+    e '7-8
+    o3 b- o4 c
+  ]} * 8
+]
+
+# 4 bars
+chords = (quant 100) o3 b-1/>d/f | o4 c/e/g/<g | o3 a/>d/f | o4 d/g/b-
+
+(tempo! 100)
+
+midi-synth-strings-1 "strings1":
+loop
+%melodramaBegins
+loop
+%dramaBegins
+loop * 2
+
+midi-synth-strings-1 "strings2":
+@melodramaBegins
+chords
+
+strings2:
+@dramaBegins
+chords * 2
+
+midi-french-horn "horn1":
+@dramaBegins
+loop * 2
+(vol 50) {o4 e o3 b- c}
+(vol 25) {o4 e o3 b- c}
+(vol 10) {o4 e o3 b- c}
+r4
+
+midi-french-horn "horn2":
+@dramaBegins
+chords * 2
